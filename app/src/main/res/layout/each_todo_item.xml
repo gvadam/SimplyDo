@@ -8,12 +8,13 @@
     app:cardUseCompatPadding="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/taskContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingVertical="20dp">
 
         <TextView
-            android:id="@+id/todoTask"
+            android:id="@+id/taskName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_mono"
@@ -26,18 +27,18 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/editTask"
+            android:id="@+id/editBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_edit"
             android:layout_marginEnd="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/deleteTask"
+            app:layout_constraintEnd_toStartOf="@id/deleteBtn"
             app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/blue" />
 
         <ImageView
-            android:id="@+id/deleteTask"
+            android:id="@+id/deleteBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"

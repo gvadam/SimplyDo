@@ -1,7 +1,6 @@
 package com.example.todoapp.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -23,13 +22,11 @@ import com.google.firebase.database.ktx.database
 class HomeFragment : Fragment(), ToDoDialogFragment.OnDialogNextBtnClickListener,
     TaskAdapter.TaskAdapterInterface {
 
-    private val TAG = "HomeFragment"
     private lateinit var binding: FragmentHomeBinding
     private lateinit var database: DatabaseReference
-    private var frag: ToDoDialogFragment? = null
+    private var dialog: ToDoDialogFragment? = null
     private lateinit var auth: FirebaseAuth
     private lateinit var authId: String
-
     private lateinit var taskAdapter: TaskAdapter
     private lateinit var toDoItemList: MutableList<ToDoData>
 
@@ -37,69 +34,46 @@ class HomeFragment : Fragment(), ToDoDialogFragment.OnDialogNextBtnClickListener
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         init()
-
-        //get data from firebase
         getTaskFromFirebase()
-
-
         binding.addTaskBtn.setOnClickListener {
-
-            if (frag != null)
-                childFragmentManager.beginTransaction().remove(frag!!).commit()
-            frag = ToDoDialogFragment()
-            frag!!.setListener(this)
-
-            frag!!.show(
-                childFragmentManager,
-                ToDoDialogFragment.TAG
-            )
-
+            if (dialog != null)
+                childFragmentManager.beginTransaction().remove(dialog!!).commit()
+            dialog = ToDoDialogFragment()
+            dialog!!.setListener(this)
+            dialog!!.show(childFragmentManager, ToDoDialogFragment.TAG)
         }
     }
 
     private fun getTaskFromFirebase() {
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-
                 toDoItemList.clear()
                 for (taskSnapshot in snapshot.children) {
-                    val todoTask =
-                        taskSnapshot.key?.let { ToDoData(it, taskSnapshot.value.toString()) }
-
+                    val todoTask = taskSnapshot.key?.let { ToDoData(it, taskSnapshot.value.toString()) }
                     if (todoTask != null) {
                         toDoItemList.add(todoTask)
                     }
-
                 }
-                Log.d(TAG, "onDataChange: " + toDoItemList)
                 taskAdapter.notifyDataSetChanged()
-
             }
-
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show()
             }
-
-
         })
     }
 
     private fun init() {
-
         auth = FirebaseAuth.getInstance()
         authId = auth.currentUser!!.uid
         database = Firebase.database.reference.child("Tasks")
             .child(authId)
-
 
         binding.mainRecyclerView.setHasFixedSize(true)
         binding.mainRecyclerView.layoutManager = LinearLayoutManager(context)
@@ -111,20 +85,17 @@ class HomeFragment : Fragment(), ToDoDialogFragment.OnDialogNextBtnClickListener
     }
 
     override fun saveTask(todoTask: String, todoEdit: TextInputEditText) {
-
         database
             .push().setValue(todoTask)
             .addOnCompleteListener {
                 if (it.isSuccessful) {
                     Toast.makeText(context, "Task Added Successfully", Toast.LENGTH_SHORT).show()
                     todoEdit.text = null
-
                 } else {
                     Toast.makeText(context, it.exception.toString(), Toast.LENGTH_SHORT).show()
                 }
             }
-        frag!!.dismiss()
-
+        dialog!!.dismiss()
     }
 
     override fun updateTask(toDoData: ToDoData, todoEdit: TextInputEditText) {
@@ -136,7 +107,7 @@ class HomeFragment : Fragment(), ToDoDialogFragment.OnDialogNextBtnClickListener
             } else {
                 Toast.makeText(context, it.exception.toString(), Toast.LENGTH_SHORT).show()
             }
-            frag!!.dismiss()
+            dialog!!.dismiss()
         }
     }
 
@@ -151,15 +122,12 @@ class HomeFragment : Fragment(), ToDoDialogFragment.OnDialogNextBtnClickListener
     }
 
     override fun onEditItemClicked(toDoData: ToDoData, position: Int) {
-        if (frag != null)
-            childFragmentManager.beginTransaction().remove(frag!!).commit()
-
-        frag = ToDoDialogFragment.newInstance(toDoData.taskId, toDoData.task)
-        frag!!.setListener(this)
-        frag!!.show(
-            childFragmentManager,
-            ToDoDialogFragment.TAG
-        )
+        if (dialog != null) {
+            childFragmentManager.beginTransaction().remove(dialog!!).commit()
+        }
+        dialog = ToDoDialogFragment.newInstance(toDoData.taskId, toDoData.task)
+        dialog!!.setListener(this)
+        dialog!!.show(childFragmentManager, ToDoDialogFragment.TAG)
     }
 
 

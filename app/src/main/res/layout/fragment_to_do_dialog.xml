@@ -13,16 +13,16 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/todoClose"
+            android:id="@+id/closeBtn"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="15dp"
             android:src="@drawable/ic_close"
-            app:layout_constraintEnd_toEndOf="@+id/cardView"
+            app:layout_constraintStart_toStartOf="@+id/taskCardView"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardView"
+            android:id="@+id/taskCardView"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
@@ -30,9 +30,8 @@
             app:cardElevation="10dp"
             app:cardUseCompatPadding="true"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/todoClose">
+            app:layout_constraintTop_toBottomOf="@+id/closeBtn">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -43,7 +42,7 @@
                 app:hintEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/todoEt"
+                    android:id="@+id/taskEdit"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@color/white"
@@ -58,14 +57,14 @@
         </com.google.android.material.card.MaterialCardView>
 
         <ImageView
-            android:id="@+id/todoNextBtn"
+            android:id="@+id/addTaskBtn"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:src="@drawable/ic_arrow"
-            app:layout_constraintTop_toBottomOf="@+id/cardView"
-            app:layout_constraintEnd_toEndOf="@+id/cardView"
+            app:layout_constraintTop_toBottomOf="@+id/taskCardView"
+            app:layout_constraintEnd_toEndOf="@+id/taskCardView"
             app:tint="@color/purple" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+      </androidx.constraintlayout.widget.ConstraintLayout>
 
-</com.google.android.material.card.MaterialCardView>
+  </com.google.android.material.card.MaterialCardView>

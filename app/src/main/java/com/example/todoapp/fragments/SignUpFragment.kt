@@ -23,36 +23,30 @@ class SignUpFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentSignUpBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
         init(view)
-
         binding.signInTV.setOnClickListener {
             navController.navigate(R.id.action_signUpFragment_to_signInFragment)
         }
-
         binding.nextBtn.setOnClickListener {
-            val email = binding.emailEt.text.toString()
-            val pass = binding.passEt.text.toString()
-            val verifyPass = binding.verifyPassEt.text.toString()
+            val email = binding.emailEdit.text.toString()
+            val pass = binding.passwordEdit.text.toString()
+            val pass2 = binding.passwordEdit2.text.toString()
 
-            if (email.isNotEmpty() && pass.isNotEmpty() && verifyPass.isNotEmpty()) {
-                if (pass == verifyPass) {
-
+            if (email.isNotEmpty() && pass.isNotEmpty() && pass2.isNotEmpty()) {
+                if (pass == pass2) {
                     registerUser(email, pass)
-
                 } else {
                     Toast.makeText(context, "Password is not same", Toast.LENGTH_SHORT).show()
                 }
-            } else
-                Toast.makeText(context, "Empty fields are not allowed", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context, "Fill in all fields", Toast.LENGTH_SHORT).show()
+            }
         }
 
     }
@@ -63,7 +57,6 @@ class SignUpFragment : Fragment() {
                 navController.navigate(R.id.action_signUpFragment_to_homeFragment)
             else
                 Toast.makeText(context, it.exception.toString(), Toast.LENGTH_SHORT).show()
-
         }
     }
 

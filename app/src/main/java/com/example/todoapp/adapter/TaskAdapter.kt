@@ -1,15 +1,16 @@
 package com.example.todoapp.adapter
 
-import android.util.Log
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.todoapp.R
 import com.example.todoapp.databinding.EachTodoItemBinding
 import com.example.todoapp.model.ToDoData
+import java.util.*
 
 class TaskAdapter(private val list: MutableList<ToDoData>) : RecyclerView.Adapter<TaskAdapter.TaskViewHolder>() {
 
-    private  val TAG = "TaskAdapter"
     private var listener:TaskAdapterInterface? = null
     fun setListener(listener:TaskAdapterInterface){
         this.listener = listener
@@ -25,16 +26,22 @@ class TaskAdapter(private val list: MutableList<ToDoData>) : RecyclerView.Adapte
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
         with(holder) {
             with(list[position]) {
-                binding.todoTask.text = this.task
+                binding.taskName.text = this.task
+                if(position % 3 == 0){
+                    binding.taskContainer.setBackgroundColor(Color.parseColor("#ffc8dd")) //pink
+                } else if (position % 2 == 0){
+                    binding.taskContainer.setBackgroundColor(Color.parseColor("#bde0fe")) //blue
+                } else {
+                    binding.taskContainer.setBackgroundColor(Color.parseColor("#ffffff")) //white
+                }
 
-                Log.d(TAG, "onBindViewHolder: "+this)
-                binding.editTask.setOnClickListener {
+                binding.editBtn.setOnClickListener {
                     listener?.onEditItemClicked(this , position)
                 }
-
-                binding.deleteTask.setOnClickListener {
+                binding.deleteBtn.setOnClickListener {
                     listener?.onDeleteItemClicked(this , position)
                 }
+
             }
         }
     }
