@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/</item>
+        <item>@font/amatica_sc</item>
+        <item>@font/assistant</item>
+        <item>@font/assistant_bold</item>
+        <item>@font/assistant_light</item>
+        <item>@font/assistant_semibold</item>
+        <item>@font/bilbo</item>
+        <item>@font/bitter</item>
+        <item>@font/chilanka</item>
+        <item>@font/hachi_maru_pop</item>
+        <item>@font/poiret_one</item>
+        <item>@font/roboto_mono</item>
+        <item>@font/roboto_mono_light</item>
+        <item>@font/roboto_mono_thin</item>
+        <item>@font/waiting_for_the_sunrise</item>
+    </array>
+</resources>
