@@ -5,31 +5,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blue"
     tools:context=".fragments.SignUpFragment">
 
     <TextView
-        android:id="@+id/signUpTv"
+        android:id="@+id/signUpTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginTop="25dp"
         android:text="Sign Up"
-        android:textColor="@color/black"
-        android:textSize="30sp"
+        android:fontFamily="@font/roboto_mono_light"
+        android:textColor="@color/white"
+        android:textSize="50sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/beigeBG"
+        android:src="@drawable/beige_bg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"/>
+
+    <View
+        app:layout_constraintTop_toTopOf="@id/beigeBG"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/emailCardView"
+        android:layout_width="90dp"
+        android:layout_height="5dp"
+        android:background="@color/blue"/>
+
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardView1"
+        android:id="@+id/emailCardView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="42dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="8dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="70dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
         app:cardUseCompatPadding="true"
-        app:layout_constraintTop_toBottomOf="@id/signUpTv"
+        app:layout_constraintTop_toTopOf="@id/beigeBG"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -46,6 +65,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@color/white"
+                android:textSize="20sp"
+                android:fontFamily="@font/roboto_mono"
                 android:hint="Enter your email"
                 android:inputType="textEmailAddress"
                 android:paddingStart="12dp"
@@ -55,17 +76,17 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardView2"
+        android:id="@+id/passwordCardView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="5dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="8dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
         app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardView1">
+        app:layout_constraintTop_toBottomOf="@id/emailCardView">
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -81,6 +102,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
+                android:textSize="20sp"
+                android:fontFamily="@font/roboto_mono"
                 android:hint="Enter your password"
                 android:inputType="textPassword"
                 android:paddingStart="12dp"
@@ -93,18 +116,18 @@
 
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardView3"
+        android:id="@+id/passwordCardView2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="5dp"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="8dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
         app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardView2">
+        app:layout_constraintTop_toBottomOf="@id/passwordCardView">
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -121,7 +144,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/white"
-                android:hint="Enter your password again"
+                android:textSize="20sp"
+                android:fontFamily="@font/roboto_mono"
+                android:hint="Re-Enter your password"
                 android:inputType="textPassword"
                 android:paddingStart="12dp"
                 android:paddingTop="15dp" />
@@ -133,36 +158,38 @@
 
     <ImageView
         android:id="@+id/nextBtn"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="12dp"
-        android:src="@drawable/btn"
-        app:layout_constraintEnd_toEndOf="@id/cardView3"
-        app:layout_constraintTop_toBottomOf="@id/cardView3" />
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/ic_arrow"
+        app:layout_constraintEnd_toEndOf="@id/passwordCardView2"
+        app:layout_constraintTop_toBottomOf="@id/passwordCardView2"
+        app:tint="@color/purple" />
 
     <TextView
         android:id="@+id/alreadyRegisteredTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginBottom="20dp"
         android:text="Already Registered?"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@+id/signInTV"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nextBtn" />
+        android:fontFamily="@font/roboto_mono"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/signInTV"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/signInTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text=" Sign In"
-        android:textColor="@color/text_color"
-        android:textSize="16sp"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:textColor="@color/purple"
+        android:textSize="22sp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/alreadyRegisteredTV"
-        app:layout_constraintTop_toTopOf="@id/alreadyRegisteredTV" />
+        app:layout_constraintStart_toEndOf="@id/alreadyRegisteredTV"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,11 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/adamg/AndroidStudioProjects/ToDoApp/app/src/main/res/drawable/beige_bg.xml" value="0.184" />
+        <entry key="..\:/Users/adamg/AndroidStudioProjects/ToDoApp/app/src/main/res/drawable/ic_baseline_add_.xml" value="0.184" />
+        <entry key="..\:/Users/adamg/AndroidStudioProjects/ToDoApp/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.184" />
         <entry key="..\:/Users/adamg/AndroidStudioProjects/ToDoApp/app/src/main/res/drawable/triangle.xml" value="0.183" />
         <entry key="..\:/Users/adamg/AndroidStudioProjects/ToDoApp/app/src/main/res/font/.xml" value="0.20572916666666666" />
         <entry key="..\:/Users/adamg/AndroidStudioProjects/ToDoApp/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
-        <entry key="..\:/Users/adamg/AndroidStudioProjects/ToDoApp/app/src/main/res/layout/each_todo_item.xml" value="0.10144927536231885" />
-        <entry key="..\:/Users/adamg/AndroidStudioProjects/ToDoApp/app/src/main/res/layout/fragment_home.xml" value="0.17552083333333332" />
+        <entry key="..\:/Users/adamg/AndroidStudioProjects/ToDoApp/app/src/main/res/layout/each_todo_item.xml" value="0.3214990138067061" />
+        <entry key="..\:/Users/adamg/AndroidStudioProjects/ToDoApp/app/src/main/res/layout/fragment_home.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/adamg/AndroidStudioProjects/ToDoApp/app/src/main/res/layout/fragment_sign_in.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/adamg/AndroidStudioProjects/ToDoApp/app/src/main/res/layout/fragment_sign_up.xml" value="0.17552083333333332" />
         <entry key="..\:/Users/adamg/AndroidStudioProjects/ToDoApp/app/src/main/res/layout/fragment_splash.xml" value="0.22" />
